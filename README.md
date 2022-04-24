@@ -16,6 +16,6 @@
 
 - MYSQL_HOST=localhost
 - MYSQL_PORT=3306   *默认为3306*
-- MYSQL_DATABASE=wechatmail *数据库名称*
-- MYSQL_USER=root *数据库用户*
-- MYSQL_PASSWORD=yishiyimaidi99 *数据库密码*
+- MYSQL_DATABASE=? *数据库名称*
+- MYSQL_USER=? *数据库用户,例如root*
+- MYSQL_PASSWORD=? *数据库密码*
