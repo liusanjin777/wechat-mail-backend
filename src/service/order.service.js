@@ -2,7 +2,8 @@ const connection = require('../app/database');
 
 class OrderService {
   async create(params) {
-    const statment = ``;
+    console.log(params);
+    const statment = `INSERT INTO order (goods_id, ord)`;
     connection.execute(statment, []);
      
   }

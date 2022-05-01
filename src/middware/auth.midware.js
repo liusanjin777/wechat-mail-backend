@@ -27,7 +27,6 @@ const verifyLogin = async (ctx, next) => {
 const verifyAuth = async (ctx, next) => {
   const authorization = ctx.header.authorization;
   if (!authorization) {
-    console.log(1);
     const err = new Error(errorType.UNAUTHORIZATION)
     return ctx.app.emit('error', err, ctx)
   }
@@ -40,7 +39,6 @@ const verifyAuth = async (ctx, next) => {
     ctx.user = res
     await next();
   } catch (error) {
-    console.log(2);
     const err = new Error(errorType.UNAUTHORIZATION)
     ctx.app.emit('error',err, ctx)
   }

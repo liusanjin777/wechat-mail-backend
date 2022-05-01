@@ -17,7 +17,7 @@ class CategoriesController {
       "msg": "获取成功",
       "status": 200
       }
-      }
+    }
   }
 }
 
