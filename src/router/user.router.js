@@ -1,12 +1,12 @@
 const Router = require('koa-router');
 const {
-  createUser
+  login
 } = require('../controller/user.controller');
 const {
-  verifyUser,
-  handlePassword
+  handleCode,
+  verifyUser
 } = require('../middware/user.middware');
 
 const userRuter = new Router({prefix: '/users'});
-userRuter.post('/',verifyUser, handlePassword, createUser);
-module.exports = userRuter
+userRuter.post('/login',handleCode, verifyUser, login);
+module.exports = userRuter;

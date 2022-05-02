@@ -1,25 +1,31 @@
+const axios = require('axios')
+
 const errorType = require('../constants/error-types');
 const service = require('../service/user.service');
-const md5Password = require('../utils/password-md5');
-const verifyUser = async (ctx, next) => {
-  const { name, password } = ctx.request.body
-  if (!name || !password) {
-    const error = new Error(errorType.NAME_OR_PASSWORD_IS_REQUIRED);
-    return ctx.app.emit('error', error, ctx);
-  }
-  const resOfGetName = await service.getNameByDataBase(name);
-  if(resOfGetName.length !== 0) {
-    const error = new Error(errorType.NAME_IS_ALREADY_EXISTS);
-    return ctx.app.emit('error', error, ctx)
-  }
+const handleCode = async (ctx, next) => {
+  const { code } = ctx.request.body;
+  const appid = 'wx99708a4e6f6a1a8b';
+  const secret = '4db8d15ad96bd40bffd6bd87b11cbdd1';
+  let url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`
+  const res = await axios.get(url);
+  ctx.openid = res.data.openid
   await next();
+  
 }
-const handlePassword = async (ctx, next) => {
-  ctx.request.body.password = md5Password(ctx.request.body.password)
+
+const verifyUser = async (ctx, next) => {
+  const res = await service.getOpenidByDataBase(ctx.openid);
+  if(res.length === 0) {
+    const res = await service.create(ctx.openid);
+    ctx.userId = res[0].insertId
+  } else {
+    ctx.userId = res[0].id
+  }
+  ctx.body = ctx.userId
   await next();
 }
 
 module.exports = {
-  verifyUser,
-  handlePassword
+  handleCode,
+  verifyUser
 }

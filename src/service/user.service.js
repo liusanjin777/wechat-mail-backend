@@ -1,15 +1,22 @@
 const connection = require('../app/database')
 class UserService {
-  async create(user) {
-    const { name, password } = user
-    const statement = `INSERT INTO user (name, password) VALUES (?,?);`;
-    const res = await connection.execute(statement, [name, password]);
-    return res
+  async create(openid) {
+    try {
+      const statement = `INSERT INTO user (openid) VALUES (?);`;
+      const res = await connection.execute(statement, [openid]);
+      return res
+    } catch (error) {
+      console.log(error);
+    }
   };
-  async getNameByDataBase(name) {
-    const statement = `SELECT * FROM user WHERE name = ?;`
-    const res = await connection.execute(statement, [name])
-    return res[0]
+  async getOpenidByDataBase(openid) {
+    try {
+      const statement = `SELECT * FROM user WHERE openid = ?;`;
+      const res = await connection.execute(statement, [openid]);
+      return res[0]
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 module.exports = new UserService()

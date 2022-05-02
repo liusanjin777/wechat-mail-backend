@@ -9,7 +9,7 @@ class FrontPageController {
       "msg": "获取成功",
       "status": 200
       }
-      }
+    }
   };
   async catitem(ctx, next) {
     const res = await service.getCatitems();
