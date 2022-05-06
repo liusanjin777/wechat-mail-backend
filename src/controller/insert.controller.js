@@ -11,13 +11,9 @@ class InsertController {
         for(let p of goods.pics) {
           insertService.insertPics(p)
         }
-        // for(let p of goods.attrs) {
-        //   insertService.insertAttr(p)
-        // }
       })
-  //   console.log(1);
   // const data = []
-  // for(let i =42000;i<=42200;i++) {
+  // for(let i = 20001;i<= 30000;i++) {
   //   let obj = {}
   //   obj.goods_id = i;
   //   data.push(obj)

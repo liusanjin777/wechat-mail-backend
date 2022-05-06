@@ -6,8 +6,8 @@ class FrontPageController {
     ctx.body = {
       "message": res,
       "meta": {
-      "msg": "获取成功",
-      "status": 200
+        "msg": "获取成功",
+        "status": 200
       }
     }
   };
@@ -16,20 +16,20 @@ class FrontPageController {
     ctx.body = {
       "message": res,
       "meta": {
-      "msg": "获取成功",
-      "status": 200
+        "msg": "获取成功",
+        "status": 200
       }
-      }
+    }
   };
   async floor(ctx, next) {
     const res = await service.getfloorData();
     ctx.body = {
       "message": res,
       "meta": {
-      "msg": "获取成功",
-      "status": 200
+        "msg": "获取成功",
+        "status": 200
       }
-      }
+    }
   }
 }
 
