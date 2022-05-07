@@ -1,8 +1,9 @@
 const Router = require('koa-router');
-const { search } = require('../controller/search.controller');
+const { qssearch, search } = require('../controller/search.controller');
 
-const searchRouter = new Router({'prefix': '/search'})
+const searchRouter = new Router()
 
-searchRouter.get('/:detail', search)
+searchRouter.get('/qssearch', qssearch)
+searchRouter.get('/search', search)
 
 module.exports = searchRouter;
