@@ -5,7 +5,7 @@
 ## 启动方法
 
 - 第一步 ---- `npm install`
-- 第二部 ---- `npm start`
+- 第二部 ---- `npm run start`
 
 ## 需要的配置
 
